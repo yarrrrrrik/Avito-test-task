@@ -99,5 +99,9 @@ max-width: 50%;
   }
 }
 .contributors {
-
+display: flex;
+flex-wrap: wrap;
+a{
+  margin-right: 8px;
+}
 }

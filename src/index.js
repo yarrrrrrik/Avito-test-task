@@ -83,9 +83,6 @@ let view = {
       </div>
       <div class="repo-big-card__description">
         <div class="languages">
-          <p>Python</p>
-          <p>C++</p>
-          <p>Pascal</p>
         </div>
         <div class="repo-big-card__info">
           <p>${repo.description}</p>
@@ -94,6 +91,24 @@ let view = {
       </div>
     `)
     document.querySelector('body').appendChild(repoNode)
+
+    for (let key in repo.languages){
+      let langEl = document.createElement('p')
+      langEl.innerText = key
+      document.querySelector('.languages').appendChild(langEl)
+    }
+
+
+    repo.contributors.forEach((item, i) => {
+      if(i<11){
+        let contributerEl = document.createElement('a')
+        contributerEl.innerText = item.login
+        contributerEl.href = item.html_url
+        document.querySelector('.contributors').appendChild(contributerEl)
+      }
+    });
+
+
 
     // let repoHeader = document.createElement('div')
     // repoHeader.classList.add('repo-big-card__header')
@@ -157,6 +172,7 @@ let controller = {
   openCardEvent:async (e) => {
     await model.getRepoCardInfo(model.reposArr[e.target.id])
     await view.makeRepoCardNodeElement(model.reposArr[e.target.id])
+    console.log(model.reposArr[e.target.id]);
     // await console.log(model.reposArr);
   }
   }
