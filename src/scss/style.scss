@@ -1,0 +1,45 @@
+body{
+  background: pink;
+}
+.root{
+  width: 100%;
+  background: blue;
+}
+.block{
+  min-height: 571px;
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 150px;
+  background: red;
+  position: relative;
+
+}
+.items{
+
+}
+.repo-card{
+  height:50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: yellow;
+
+}
+.search{
+  position: absolute;
+  top:-30px;
+  left:35%;
+}
+.pagination{
+  position: absolute;
+  top:96.4%;
+  width: 100%;
+  margin-left:37%;
+}
+.active-btn{
+  background: blue;
+}
+.hidden{
+  display: none;
+}
