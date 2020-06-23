@@ -1,5 +1,7 @@
 body{
   background: pink;
+  // background: url('https://i.ytimg.com/vi/Q2Fq8NNRYJ0/maxresdefault.jpg');
+  // height: 000px;
 }
 .root{
   width: 100%;
@@ -42,4 +44,60 @@ body{
 }
 .hidden{
   display: none;
+}
+.repo-big-card{
+  background: rgba(237, 130, 242, 0.44);
+  min-height: 571px;
+  margin: 0 auto;
+  width: 60%;
+  margin-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.repo-big-card__header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+	h3 {
+
+	}
+
+	p {
+
+	}
+}
+
+.repo-big-card__user {
+  background: rgba(65, 176, 180, 0.81);
+  max-width: 200px;
+	img {
+  max-width: 200px;
+  max-height: 200px;
+	}
+
+	a {
+
+	}
+}
+
+.repo-big-card__description {
+max-width: 50%;
+}
+
+.languages {
+  display: flex;
+  background: pink;
+  p {
+  margin-right: 15px;
+  }
+}
+.repo-big-card__info {
+  p {
+
+  }
+}
+.contributors {
+
 }

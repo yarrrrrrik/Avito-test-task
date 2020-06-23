@@ -2,11 +2,16 @@ import './scss/style.scss'
 import {bigRepoCard} from './card_page'
 
 class Repo {
-  constructor(name,stars,updated,link) {
+  constructor(name,stars,updated,link,avatar_url,login,description,contributors_url,languages_url) {
       this.name = name;
       this.stars = stars;
       this.updated = updated;
       this.link = link;
+      this.description = description;
+      this.contributors_url = contributors_url;
+      this.languages_url = languages_url;
+      this.avatar_url = avatar_url;
+      this.login = login;
   }
 }
 
@@ -14,7 +19,6 @@ let model = {
   response:'',
 
   reposArr:[],
-// curl 'https://api.github.com/user/repos?page=2&per_page=100'
 
   pushReposToArr: (reposArr,response) => {
 
@@ -27,19 +31,25 @@ let model = {
     console.log(searchValue);
     console.log(page);
     // https://api.github.com/search/repositories?q=stars:%3E0&sort=stars&order=desc&page=1
+    // GET /repos/:owner/:repo/stats/contributors
+    // https://api.github.com/repos/freeCodeCamp/freeCodeCamp/stats/commit_activity
+    // "contributors_url": "https://api.github.com/repos/vuejs/vue/contributors",
+    // "description": "🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.",
+
     let request = await fetch(`https://api.github.com/search/repositories?q=${searchValue}&sort=stars&order=desc&page=${page}&per_page=10`)
     model.response = await request.json()
     model.response.items.forEach((item, i) => {
-        let repo = new Repo(item.name,item.stargazers_count,item.updated_at,item.html_url)
+        console.log(item.owner.avatar_url);
+        let repo = new Repo(item.name,item.stargazers_count,item.updated_at,item.html_url,item.owner.avatar_url,item.owner.login,item.description,item.contributors_url,item.languages_url)
         model.reposArr.push(repo)
+        console.log(model.reposArr)
+
     });
   },
 }
-// item.name item.stargazers_count item.updated_at item.html_url
 let view = {
   inputValue:undefined,
   makeRepoNodeElement:(repo) => {
-    // let repo = new Repo(title,stars,date,link)
     let repoNode = document.createElement('div')
     repoNode.classList.add('repo-card')
 
